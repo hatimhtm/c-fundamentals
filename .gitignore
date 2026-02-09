@@ -1,0 +1,19 @@
+# Build artifacts
+build/
+*.o
+*.a
+
+# Editor files
+.vscode/
+*.swp
+*.swo
+*~
+
+# IDE
+.idea/
+*.xcodeproj/
+*.xcworkspace/
+
+# OS files
+.DS_Store
+Thumbs.db
