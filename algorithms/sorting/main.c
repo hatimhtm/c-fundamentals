@@ -25,13 +25,15 @@ static string_sort_fn algo_from_name(const char *name) {
   if (strcmp(name, "bubble") == 0)    return bubble_sort_strings;
   if (strcmp(name, "quick") == 0)     return quicksort_strings;
   if (strcmp(name, "merge") == 0)     return merge_sort_strings;
+  if (strcmp(name, "heap") == 0)      return heap_sort_strings;
+  /* radix is integers-only — not exposed via this string-sort CLI. */
   return NULL;
 }
 
 static void print_usage(const char *prog) {
   printf("Usage: %s [--algo=NAME] [words...]\n", prog);
-  printf("\nAlgorithms: selection · insertion · bubble · quick · merge\n");
-  printf("Default: selection.\n\n");
+  printf("\nAlgorithms: selection · insertion · bubble · quick · merge · heap\n");
+  printf("Default: selection. Radix is integers-only and not exposed here.\n\n");
   printf("Examples:\n");
   printf("  %s banana apple cherry\n", prog);
   printf("  %s --algo=quick zebra ant mouse cat\n", prog);
