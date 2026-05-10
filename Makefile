@@ -13,9 +13,14 @@
 #   make clean          rm -rf build/
 
 CC      ?= cc
-# _POSIX_C_SOURCE=200809L exposes strdup, clock_gettime, getopt_long etc.
-# under -std=c11. macOS is permissive about this; Linux/glibc is not.
-CFLAGS  ?= -Wall -Wextra -Werror -std=c11 -O2 -pedantic -D_POSIX_C_SOURCE=200809L
+# Feature-test macros:
+#   _POSIX_C_SOURCE=200809L  → strdup, clock_gettime, getopt_long under -std=c11
+#                              (glibc otherwise hides POSIX functions in strict mode)
+#   _DARWIN_C_SOURCE         → re-enable BSD-extension types (u_int, u_char,
+#                              u_short, sysctlbyname) that Apple's headers gate
+#                              behind this when _POSIX_C_SOURCE is set
+CFLAGS  ?= -Wall -Wextra -Werror -std=c11 -O2 -pedantic \
+           -D_POSIX_C_SOURCE=200809L -D_DARWIN_C_SOURCE
 LDFLAGS ?=
 
 BUILD_DIR := build
