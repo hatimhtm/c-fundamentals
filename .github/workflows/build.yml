@@ -2,12 +2,17 @@ name: Build
 
 on:
   push:
-    branches: [main, master]
+    branches: [main]
   pull_request:
-    branches: [main, master]
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build:
+    name: ${{ matrix.os }} · ${{ matrix.compiler }}
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
@@ -16,24 +21,23 @@ jobs:
         compiler: [gcc, clang]
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Set compiler
-        run: |
-          if [ "${{ matrix.compiler }}" = "gcc" ]; then
-            echo "CC=gcc" >> $GITHUB_ENV
-          else
-            echo "CC=clang" >> $GITHUB_ENV
-          fi
+        run: echo "CC=${{ matrix.compiler }}" >> $GITHUB_ENV
 
       - name: Build all modules
         run: make all
 
-      - name: Run tests
+      - name: Run unit tests
         run: make test
 
+      - name: Run smoke tests
+        run: make smoke
+
       - name: Upload build artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: binaries-${{ matrix.os }}-${{ matrix.compiler }}
           path: build/
+          retention-days: 7

@@ -50,10 +50,15 @@ char caesar_encrypt_char(char c, int shift);
 char caesar_decrypt_char(char c, int shift);
 
 /**
- * @brief Perform frequency analysis to guess the shift value
+ * @brief Crack a Caesar cipher by chi-squared comparison against English
+ *        letter frequencies.
+ *
+ * For each candidate shift 0..25, the function "decrypts" with that shift
+ * and computes the chi-squared statistic between the resulting letter
+ * distribution and standard English. Lowest chi-squared = best shift.
  *
  * @param text The encrypted text to analyze
- * @return The most likely shift value used
+ * @return The most likely shift value used (0–25)
  */
 int caesar_crack(const char *text);
 

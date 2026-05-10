@@ -6,8 +6,7 @@
  * from the unsorted portion and placing it at the beginning.
  */
 
-#include "selection_sort.h"
-#include <stdio.h>
+#include "sorts.h"
 #include <string.h>
 
 size_t find_min_index(char **arr, size_t start, size_t n) {
