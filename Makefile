@@ -13,7 +13,9 @@
 #   make clean          rm -rf build/
 
 CC      ?= cc
-CFLAGS  ?= -Wall -Wextra -Werror -std=c11 -O2 -pedantic
+# _POSIX_C_SOURCE=200809L exposes strdup, clock_gettime, getopt_long etc.
+# under -std=c11. macOS is permissive about this; Linux/glibc is not.
+CFLAGS  ?= -Wall -Wextra -Werror -std=c11 -O2 -pedantic -D_POSIX_C_SOURCE=200809L
 LDFLAGS ?=
 
 BUILD_DIR := build
