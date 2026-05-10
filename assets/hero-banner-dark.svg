@@ -17,11 +17,12 @@
   <line x1="0" y1="36" x2="1280" y2="36" stroke="#FFFDF5" stroke-width="3"/>
   <text class="mono" x="640" y="24" text-anchor="middle" font-size="12" fill="#1A1A1A" letter-spacing="6">C11 · GCC · CLANG · POSIX · ZERO DEPENDENCIES · MIT</text>
 
-  <text class="mono" x="60" y="100" font-size="13" fill="#FFFDF5" letter-spacing="6">ALGORITHMS / DATA STRUCTURES / SYSTEMS</text>
+  <text class="mono" x="60" y="100" font-size="13" fill="#FFFDF5" letter-spacing="6">C11 / ALGORITHMS / DATA STRUCTURES / SYSTEMS</text>
 
-  <text class="heading" x="60" y="240" font-size="120" fill="#FFFDF5" letter-spacing="-6">C FUNDAMENTALS<tspan fill="#CCFF00">.</tspan></text>
+  <text class="heading" x="60" y="195" font-size="130" fill="#FFFDF5" letter-spacing="-6">C</text>
+  <text class="heading" x="60" y="305" font-size="130" fill="#FFFDF5" letter-spacing="-6">FUNDAMENTALS<tspan fill="#CCFF00">.</tspan></text>
 
-  <text class="mono" x="60" y="295" font-size="20" fill="#FFFDF5" letter-spacing="4">/// 5 SORTS · BINARY SEARCH · 2 CIPHERS · LINKED LIST · HASH TABLE ///</text>
+  <text class="mono" x="60" y="345" font-size="18" fill="#FFFDF5" letter-spacing="4">/// 5 SORTS · BINARY SEARCH · 2 CIPHERS · LINKED LIST · HASH TABLE ///</text>
 
   <rect x="1080" y="80" width="140" height="140" fill="#CCFF00" stroke="#FFFDF5" stroke-width="6"/>
   <text class="mono" x="1150" y="138" text-anchor="middle" font-size="13" fill="#1A1A1A" letter-spacing="2">C11</text>
