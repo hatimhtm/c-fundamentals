@@ -19,8 +19,9 @@ CC      ?= cc
 # Feature-test macros:
 #   _POSIX_C_SOURCE=200809L  → strdup, clock_gettime, getopt_long, statvfs etc.
 #   _DARWIN_C_SOURCE         → re-enable BSD types Apple's headers gate behind it
+#   _DEFAULT_SOURCE          → exposes getloadavg() on glibc (Linux); harmless elsewhere
 CFLAGS  ?= -Wall -Wextra -Werror -std=c11 -O2 -pedantic \
-           -D_POSIX_C_SOURCE=200809L -D_DARWIN_C_SOURCE
+           -D_POSIX_C_SOURCE=200809L -D_DARWIN_C_SOURCE -D_DEFAULT_SOURCE
 LDFLAGS ?=
 
 BUILD_DIR := build
@@ -217,7 +218,7 @@ asan:
 	@echo "── AddressSanitizer pass ──"
 	$(MAKE) clean
 	$(MAKE) test CFLAGS='-Wall -Wextra -Werror -std=c11 -O1 -g -pedantic \
-                          -D_POSIX_C_SOURCE=200809L -D_DARWIN_C_SOURCE \
+                          -D_POSIX_C_SOURCE=200809L -D_DARWIN_C_SOURCE -D_DEFAULT_SOURCE \
                           -fsanitize=address -fno-omit-frame-pointer' \
               LDFLAGS='-fsanitize=address'
 
@@ -225,7 +226,7 @@ ubsan:
 	@echo "── UndefinedBehaviorSanitizer pass ──"
 	$(MAKE) clean
 	$(MAKE) test CFLAGS='-Wall -Wextra -Werror -std=c11 -O1 -g -pedantic \
-                          -D_POSIX_C_SOURCE=200809L -D_DARWIN_C_SOURCE \
+                          -D_POSIX_C_SOURCE=200809L -D_DARWIN_C_SOURCE -D_DEFAULT_SOURCE \
                           -fsanitize=undefined -fno-omit-frame-pointer' \
               LDFLAGS='-fsanitize=undefined'
 
