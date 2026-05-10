@@ -7,11 +7,16 @@
 
 <p align="center">
   <a href="https://github.com/hatimhtm/c-fundamentals/actions/workflows/build.yml"><img src="https://img.shields.io/github/actions/workflow/status/hatimhtm/c-fundamentals/build.yml?branch=main&style=for-the-badge&label=CI&labelColor=1A1A1A&color=CCFF00" alt="CI" /></a>
+  <a href="https://hatimhtm.github.io/c-fundamentals/"><img src="https://img.shields.io/badge/DOCS-DOXYGEN-CCFF00?style=for-the-badge&labelColor=1A1A1A" alt="API docs" /></a>
   <img src="https://img.shields.io/badge/STATUS-OPEN_SOURCE-CCFF00?style=for-the-badge&labelColor=1A1A1A" alt="Open source" />
   <img src="https://img.shields.io/badge/C-11-1A1A1A?style=for-the-badge&logo=c&logoColor=CCFF00" alt="C11" />
   <img src="https://img.shields.io/badge/Tests-1009_asserts-1A1A1A?style=for-the-badge&labelColor=1A1A1A" alt="1009 test assertions" />
   <img src="https://img.shields.io/badge/Sanitizers-ASan_%2B_UBSan-1A1A1A?style=for-the-badge&labelColor=1A1A1A" alt="ASan + UBSan clean" />
   <img src="https://img.shields.io/badge/License-MIT-1A1A1A?style=for-the-badge&labelColor=1A1A1A" alt="MIT License" />
+</p>
+
+<p align="center">
+  📖 <a href="https://hatimhtm.github.io/c-fundamentals/"><strong>API docs (Doxygen)</strong></a>
 </p>
 
 <p align="center">
