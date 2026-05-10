@@ -21,13 +21,15 @@
   <!-- Eyebrow -->
   <text class="mono" x="60" y="100" font-size="13" fill="#1A1A1A" letter-spacing="6">C11 / ALGORITHMS / DATA STRUCTURES / SYSTEMS</text>
 
-  <!-- Big name — two lines, with extra vertical breathing room so 'C' and
-       'FUNDAMENTALS.' read as stacked rather than colliding. -->
-  <text class="heading" x="60" y="180" font-size="120" fill="#1A1A1A" letter-spacing="-4">C</text>
-  <text class="heading" x="60" y="298" font-size="68" fill="#1A1A1A" letter-spacing="-2">FUNDAMENTALS<tspan dx="6" fill="#CCFF00">.</tspan></text>
+  <!-- Big name — single line. textLength forces the text to fit exactly
+       1000 units regardless of font fallback; lengthAdjust='spacingAndGlyphs'
+       scales glyph width slightly to make it fit. Both modern browsers and
+       GitHub's image proxy honour textLength (only macOS QuickLook ignores
+       it, which we don't care about). -->
+  <text class="heading" x="60" y="250" font-size="120" fill="#1A1A1A" letter-spacing="-4" textLength="1000" lengthAdjust="spacingAndGlyphs">C FUNDAMENTALS<tspan fill="#CCFF00">.</tspan></text>
 
   <!-- Subline (features only — quality stats are in the bottom marquee) -->
-  <text class="mono" x="60" y="338" font-size="13" fill="#1A1A1A" letter-spacing="3">/// 7 SORTS · BINARY SEARCH · 4 CRYPTO PRIMS · 7 DATA STRUCTURES ///</text>
+  <text class="mono" x="60" y="310" font-size="13" fill="#1A1A1A" letter-spacing="3">/// 7 SORTS · BINARY SEARCH · 4 CRYPTO PRIMS · 7 DATA STRUCTURES ///</text>
 
   <!-- Acid corner -->
   <rect x="1080" y="80" width="140" height="140" fill="#CCFF00" stroke="#1A1A1A" stroke-width="6"/>
