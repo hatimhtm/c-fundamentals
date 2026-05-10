@@ -6,11 +6,11 @@
  * system calls. Works on Unix-like systems (Linux, macOS, BSD).
  */
 
-#include <errno.h>
 #include <pwd.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <sys/statvfs.h>
 #include <sys/utsname.h>
 #include <unistd.h>
 
@@ -112,10 +112,43 @@ void print_memory_info(void) {
 #endif
 }
 
+static void print_load_average(void) {
+  printf("\nLoad Average\n");
+  print_separator();
+
+  double loads[3];
+  int n = getloadavg(loads, 3);
+  if (n == 3) {
+    printf("  %-15s %.2f, %.2f, %.2f (1m, 5m, 15m)\n",
+           "Load:", loads[0], loads[1], loads[2]);
+  } else {
+    printf("  Load average unavailable\n");
+  }
+}
+
+static void print_disk_usage(void) {
+  printf("\nDisk (root volume)\n");
+  print_separator();
+
+  struct statvfs vfs;
+  if (statvfs("/", &vfs) != 0) {
+    perror("statvfs");
+    return;
+  }
+  double total_gb = (double)vfs.f_blocks * vfs.f_frsize / (1024.0 * 1024.0 * 1024.0);
+  double avail_gb = (double)vfs.f_bavail * vfs.f_frsize / (1024.0 * 1024.0 * 1024.0);
+  double used_gb  = total_gb - avail_gb;
+  double pct      = total_gb > 0 ? used_gb / total_gb * 100.0 : 0.0;
+
+  printf("  %-15s %.2f GB\n", "Total:",     total_gb);
+  printf("  %-15s %.2f GB\n", "Used:",      used_gb);
+  printf("  %-15s %.2f GB\n", "Available:", avail_gb);
+  printf("  %-15s %.1f%%\n",  "Used %:",    pct);
+}
+
 int main(int argc, char *argv[]) {
   int verbose = 0;
 
-  // Simple argument parsing
   for (int i = 1; i < argc; i++) {
     if (strcmp(argv[i], "-v") == 0 || strcmp(argv[i], "--verbose") == 0) {
       verbose = 1;
@@ -123,7 +156,7 @@ int main(int argc, char *argv[]) {
       printf("Usage: %s [-v|--verbose] [-h|--help]\n", argv[0]);
       printf("\nDisplay system information.\n");
       printf("\nOptions:\n");
-      printf("  -v, --verbose  Show detailed information\n");
+      printf("  -v, --verbose  Show CPU, memory, user, load avg, and disk\n");
       printf("  -h, --help     Show this help message\n");
       return EXIT_SUCCESS;
     }
@@ -136,6 +169,8 @@ int main(int argc, char *argv[]) {
     print_user_info();
     print_cpu_info();
     print_memory_info();
+    print_load_average();
+    print_disk_usage();
   }
 
   printf("\n");

@@ -27,7 +27,7 @@
   <text class="heading" x="60" y="290" font-size="68" fill="#1A1A1A" letter-spacing="-2">FUNDAMENTALS<tspan fill="#CCFF00">.</tspan></text>
 
   <!-- Subline -->
-  <text class="mono" x="60" y="335" font-size="15" fill="#1A1A1A" letter-spacing="3">/// 5 SORTS · BINARY SEARCH · 2 CIPHERS · LINKED LIST · HASH TABLE ///</text>
+  <text class="mono" x="60" y="335" font-size="13" fill="#1A1A1A" letter-spacing="3">/// 7 SORTS · BINARY SEARCH · 4 CRYPTO PRIMS · 7 DATA STRUCTS · 1009 ASSERTS ///</text>
 
   <!-- Acid corner -->
   <rect x="1080" y="80" width="140" height="140" fill="#CCFF00" stroke="#1A1A1A" stroke-width="6"/>
@@ -36,5 +36,5 @@
   <text class="mono" x="1150" y="178" text-anchor="middle" font-size="13" fill="#1A1A1A" letter-spacing="2">0 DEPS</text>
 
   <!-- Bottom mono line -->
-  <text class="mono" x="60" y="378" font-size="12" fill="#1A1A1A" letter-spacing="4">/// 227 TEST ASSERTIONS · 43 TEST CASES · LINUX + macOS · GCC + CLANG ///</text>
+  <text class="mono" x="60" y="378" font-size="12" fill="#1A1A1A" letter-spacing="4">/// 1009 ASSERTS · ASAN + UBSAN CLEAN · LINUX + macOS · GCC + CLANG ///</text>
 </svg>

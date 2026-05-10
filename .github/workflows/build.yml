@@ -11,6 +11,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  # ── Build + tests on the cross-product of {Linux, macOS} × {gcc, clang} ──
   build:
     name: ${{ matrix.os }} · ${{ matrix.compiler }}
     runs-on: ${{ matrix.os }}
@@ -41,3 +42,22 @@ jobs:
           name: binaries-${{ matrix.os }}-${{ matrix.compiler }}
           path: build/
           retention-days: 7
+
+  # ── Memory-safety pass with AddressSanitizer + UndefinedBehaviorSanitizer ──
+  sanitizers:
+    name: sanitizers (clang)
+    runs-on: ubuntu-latest
+    needs: build  # only run if the basic matrix already passed
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: AddressSanitizer
+        run: make asan
+        env:
+          CC: clang
+
+      - name: UndefinedBehaviorSanitizer
+        run: make ubsan
+        env:
+          CC: clang
+          UBSAN_OPTIONS: print_stacktrace=1:halt_on_error=1

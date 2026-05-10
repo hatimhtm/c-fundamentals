@@ -5,7 +5,6 @@
 
 #include "../algorithms/sorting/sorts.h"
 #include "test.h"
-#include <stdlib.h>
 #include <string.h>
 
 typedef void (*int_sort_fn)(int *, size_t);
@@ -47,6 +46,9 @@ TEST_CASE(quicksort_int)      { check_int_sort(quicksort_ints); }
 TEST_CASE(quicksort_str)      { check_str_sort(quicksort_strings); }
 TEST_CASE(merge_sort_int)     { check_int_sort(merge_sort_ints); }
 TEST_CASE(merge_sort_str)     { check_str_sort(merge_sort_strings); }
+TEST_CASE(heap_sort_int)      { check_int_sort(heap_sort_ints); }
+TEST_CASE(heap_sort_str)      { check_str_sort(heap_sort_strings); }
+TEST_CASE(radix_sort_int)     { check_int_sort(radix_sort_ints); }
 
 TEST_CASE(empty_arrays) {
   int empty[1];
@@ -89,6 +91,9 @@ void run_sort_tests(void) {
   RUN_TEST(quicksort_str);
   RUN_TEST(merge_sort_int);
   RUN_TEST(merge_sort_str);
+  RUN_TEST(heap_sort_int);
+  RUN_TEST(heap_sort_str);
+  RUN_TEST(radix_sort_int);
   RUN_TEST(empty_arrays);
   RUN_TEST(single_element);
   RUN_TEST(already_sorted);
