@@ -6,13 +6,13 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/hatimhtm/c-fundamentals/actions/workflows/build.yml"><img src="https://img.shields.io/github/actions/workflow/status/hatimhtm/c-fundamentals/build.yml?branch=main&style=for-the-badge&label=CI&labelColor=1A1A1A&color=CCFF00" alt="CI" /></a>
-  <a href="https://hatimhtm.github.io/c-fundamentals/"><img src="https://img.shields.io/badge/DOCS-DOXYGEN-CCFF00?style=for-the-badge&labelColor=1A1A1A" alt="API docs" /></a>
-  <img src="https://img.shields.io/badge/STATUS-OPEN_SOURCE-CCFF00?style=for-the-badge&labelColor=1A1A1A" alt="Open source" />
-  <img src="https://img.shields.io/badge/C-11-1A1A1A?style=for-the-badge&logo=c&logoColor=CCFF00" alt="C11" />
-  <img src="https://img.shields.io/badge/Tests-1009_asserts-1A1A1A?style=for-the-badge&labelColor=1A1A1A" alt="1009 test assertions" />
-  <img src="https://img.shields.io/badge/Sanitizers-ASan_%2B_UBSan-1A1A1A?style=for-the-badge&labelColor=1A1A1A" alt="ASan + UBSan clean" />
-  <img src="https://img.shields.io/badge/License-MIT-1A1A1A?style=for-the-badge&labelColor=1A1A1A" alt="MIT License" />
+  <a href="https://github.com/hatimhtm/c-fundamentals/actions/workflows/build.yml"><img src="https://img.shields.io/github/actions/workflow/status/hatimhtm/c-fundamentals/build.yml?style=flat-square&label=CI&branch=main&labelColor=14151A&color=2E4FD6" alt="CI" /></a>
+  <a href="https://hatimhtm.github.io/c-fundamentals/"><img src="https://img.shields.io/badge/DOCS-DOXYGEN-EBEAE6?style=flat-square&labelColor=14151A&color=EBEAE6" alt="API docs" /></a>
+  <img src="https://img.shields.io/badge/STATUS-OPEN_SOURCE-EBEAE6?style=flat-square&labelColor=14151A&color=EBEAE6" alt="Open source" />
+  <img src="https://img.shields.io/badge/C-11-2E4FD6?style=flat-square&logo=c&logoColor=white&labelColor=14151A&color=2E4FD6" alt="C11" />
+  <img src="https://img.shields.io/badge/Tests-1009_asserts-2E4FD6?style=flat-square&labelColor=14151A&color=2E4FD6" alt="1009 test assertions" />
+  <img src="https://img.shields.io/badge/Sanitizers-ASan_%2B_UBSan-2E4FD6?style=flat-square&labelColor=14151A&color=2E4FD6" alt="ASan + UBSan clean" />
+  <img src="https://img.shields.io/badge/License-MIT-2E4FD6?style=flat-square&labelColor=14151A&color=2E4FD6" alt="MIT License" />
 </p>
 
 <p align="center">
@@ -23,22 +23,18 @@
   <em>A reference implementation of the algorithms, data structures, cryptographic primitives, and systems calls every C programmer eventually writes by hand. Seven sorts, binary search, four crypto primitives (Caesar with chi-squared cracker, Vigenère, XOR, SHA-256), seven data structures (linked list, stack, queue, BST, heap / priority queue, trie, hash table), POSIX systems demos. Zero dependencies, 1009 test assertions, GCC + Clang clean on Linux + macOS, AddressSanitizer + UndefinedBehaviorSanitizer in CI.</em>
 </p>
 
----
-
-### `/// WHAT'S INSIDE`
+## What's inside
 
 | Module | Highlights |
 |---|---|
 | **Sorting** | Selection · Bubble · Insertion · Quicksort (Lomuto) · Merge sort (top-down with reusable aux buffer) · Heap sort (in-place) · Radix sort (LSD, byte-by-byte counting) |
-| **Searching** | Binary search — iterative + recursive, size_t-safe midpoint, both `int` and string variants |
+| **Searching** | Binary search: iterative + recursive, size_t-safe midpoint, both `int` and string variants |
 | **Encryption** | Caesar cipher with chi-squared frequency-analysis cracker · Vigenère polyalphabetic cipher · XOR stream cipher · **SHA-256 from scratch** (FIPS 180-4, validated against NIST test vectors) |
 | **Data structures** | Singly-linked list · Stack (growable array) · Queue (circular buffer with O(1) push/pop) · Binary search tree · Min-heap / priority queue (with linear `heap_build`) · Trie (26-way prefix tree) · Open-addressing hash table (djb2, linear probing, tombstones, auto-resize) |
 | **Systems** | Cross-platform `sysinfo` (uname, sysctl, sysconf, getloadavg, statvfs) · `signal-demo` showing graceful SIGINT/SIGTERM handling via `sigaction` + `volatile sig_atomic_t` |
 | **Benchmarks** | Empirical comparison of all seven sorts on `n={100, 1k, 10k}` random integers, deterministic seed |
 
----
-
-### `/// QUICK START`
+## Quick start
 
 ```bash
 git clone https://github.com/hatimhtm/c-fundamentals.git
@@ -52,9 +48,7 @@ make ubsan    # rebuild with UndefinedBehaviorSanitizer + run tests
 
 Compiler swap: `make clean && make all CC=clang`. Custom flags: `make CFLAGS='-O3 -march=native ...'` (the defaults already include `-Wall -Wextra -Werror -pedantic`).
 
----
-
-### `/// SORTING`
+## Sorting
 
 ```bash
 ./build/sorting --algo=quick zebra ant mouse cat
@@ -64,7 +58,7 @@ echo -e "foo\nbar\nbaz" | ./build/sorting --algo=merge
 
 Algorithms: `selection · insertion · bubble · quick · merge · heap · radix` (radix is integers-only, others have both `*_ints` and `*_strings`).
 
-#### Sample benchmark output
+### Sample benchmark output
 
 ```
 | Algorithm  | n=100     | n=1000    | n=10000   |
@@ -78,9 +72,7 @@ Algorithms: `selection · insertion · bubble · quick · merge · heap · radix
 
 Run `./build/benchmark` to regenerate; deterministic seed = 42.
 
----
-
-### `/// SEARCHING`
+## Searching
 
 ```bash
 ./build/bsearch 7 3 1 9 7 4 2
@@ -91,9 +83,7 @@ Run `./build/benchmark` to regenerate; deterministic seed = 42.
 
 Iterative + recursive variants, [tested for equivalence](tests/test_search.c) on every value 1..21 against a known sorted array.
 
----
-
-### `/// ENCRYPTION`
+## Encryption
 
 ```bash
 # Caesar
@@ -111,13 +101,11 @@ Iterative + recursive variants, [tested for equivalence](tests/test_search.c) on
 # ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad
 ```
 
-The Caesar cracker uses **chi-squared distance** against standard English letter frequencies (not the naive "most-common-letter == E" approach). The SHA-256 implementation is straight from FIPS 180-4 — [validated against NIST test vectors](tests/test_sha256.c) including the empty string, "abc", and the 56-byte boundary-padding example.
+The Caesar cracker uses **chi-squared distance** against standard English letter frequencies (not the naive "most-common-letter == E" approach). The SHA-256 implementation is straight from FIPS 180-4: [validated against NIST test vectors](tests/test_sha256.c) including the empty string, "abc", and the 56-byte boundary-padding example.
 
----
+## Data structures
 
-### `/// DATA STRUCTURES`
-
-Each structure is a self-contained library — no inter-module deps except where noted (heap sort delegates max-sift-down to `data_structures/heap`).
+Each structure is a self-contained library: no inter-module deps except where noted (heap sort delegates max-sift-down to `data_structures/heap`).
 
 | Structure | API surface | Notes |
 |---|---|---|
@@ -136,9 +124,7 @@ CLI demos for `linked_list` and `hash_table`. The rest are exercised by tests:
 ./build/hash-table-demo the cat sat on the mat
 ```
 
----
-
-### `/// SYSTEMS`
+## Systems
 
 ```bash
 ./build/sysinfo -v
@@ -156,9 +142,7 @@ CLI demos for `linked_list` and `hash_table`. The rest are exercised by tests:
 
 `sysinfo` branches on `__APPLE__` for `sysctlbyname` (CPU brand, RAM); falls back to `sysconf` on Linux/BSD. `signal-demo` is a textbook example of the safe pattern: handler sets a `volatile sig_atomic_t` flag, main loop polls.
 
----
-
-### `/// PROJECT LAYOUT`
+## Project layout
 
 ```
 c-fundamentals/
@@ -184,11 +168,9 @@ c-fundamentals/
 └── README.md
 ```
 
----
+## Testing
 
-### `/// TESTING`
-
-Hand-rolled assertion macros — `tests/test.h` defines `ASSERT`, `ASSERT_EQ_INT`, `ASSERT_EQ_STR`, `ASSERT_EQ_SIZE`, `ASSERT_TRUE/FALSE`, `ASSERT_NULL/NOT_NULL`. Failures print location + message but **do not abort**, so a single `make test` run reports every failure in every suite at once.
+Hand-rolled assertion macros: `tests/test.h` defines `ASSERT`, `ASSERT_EQ_INT`, `ASSERT_EQ_STR`, `ASSERT_EQ_SIZE`, `ASSERT_TRUE/FALSE`, `ASSERT_NULL/NOT_NULL`. Failures print location + message but **do not abort**, so a single `make test` run reports every failure in every suite at once.
 
 ```
 $ make test
@@ -215,43 +197,33 @@ Failures:         0
 | `test_trie` | Insert · contains · starts_with · rejects non-{a-z} input |
 | `test_hash_table` | Create · set/get · overwrite · remove · resize-rehash · slot reuse after remove |
 
----
-
-### `/// CI`
+## CI
 
 | Job | Matrix |
 |---|---|
-| **build** | `{ubuntu-latest, macos-latest} × {gcc, clang}` — build, run tests, run smoke |
-| **sanitizers** | `ubuntu-latest × clang` — full test suite under `-fsanitize=address` then `-fsanitize=undefined`; halts on the first UB it finds |
+| **build** | `{ubuntu-latest, macos-latest} × {gcc, clang}`: build, run tests, run smoke |
+| **sanitizers** | `ubuntu-latest × clang`: full test suite under `-fsanitize=address` then `-fsanitize=undefined`; halts on the first UB it finds |
 
 Every push to `main` and every PR triggers all five jobs. Concurrency group cancels superseded runs.
 
----
-
-### `/// CONTRIBUTING`
+## Contributing
 
 Pull requests welcome. The code style is K&R-ish, two-space indent, snake_case, doc comments on every public function. Please:
 
 1. Keep `-Wall -Wextra -Werror -pedantic` clean on both GCC and Clang.
-2. Add tests for new code — at minimum, one positive case + one edge case.
+2. Add tests for new code, at minimum, one positive case + one edge case.
 3. Run `make asan && make ubsan` before opening a PR.
 4. Don't introduce dependencies. If you need a hash function, write it inline.
 
----
+## License
 
-### `/// LICENSE`
-
-[MIT](LICENSE) — use it, fork it, ship something with it.
+[MIT](LICENSE): use it, fork it, ship something with it.
 
 ---
 
 <p align="center">
-  <a href="https://hatimelhassak.is-a.dev"><img src="https://img.shields.io/badge/PORTFOLIO-1A1A1A?style=for-the-badge&logo=vercel&logoColor=CCFF00" alt="Portfolio" /></a>
-  <a href="https://cal.com/hatimelhassak/engineering-discovery"><img src="https://img.shields.io/badge/BOOK_A_CALL-CCFF00?style=for-the-badge&logo=googlecalendar&logoColor=1A1A1A" alt="Book a call" /></a>
-  <a href="https://www.linkedin.com/in/hatim-elhassak/"><img src="https://img.shields.io/badge/LINKEDIN-1A1A1A?style=for-the-badge&logo=linkedin&logoColor=CCFF00" alt="LinkedIn" /></a>
-  <a href="mailto:hatimelhassak.official@gmail.com"><img src="https://img.shields.io/badge/EMAIL-1A1A1A?style=for-the-badge&logo=gmail&logoColor=CCFF00" alt="Email" /></a>
-</p>
-
-<p align="center">
-  <code>///&nbsp;&nbsp;OPEN FOR NEW WORK&nbsp;&nbsp;///&nbsp;&nbsp;CONTRACT &amp; FREELANCE&nbsp;&nbsp;///&nbsp;&nbsp;REMOTE WORLDWIDE&nbsp;&nbsp;///</code>
+  <a href="https://hatimelhassak.is-a.dev">Portfolio</a> ·
+  <a href="https://cal.com/hatimelhassak/engineering-discovery">Book a call</a> ·
+  <a href="https://www.linkedin.com/in/hatim-elhassak/">LinkedIn</a> ·
+  <a href="mailto:hatimelhassak.official@gmail.com">Email</a>
 </p>
